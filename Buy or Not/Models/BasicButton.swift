@@ -13,11 +13,13 @@ struct BasicButton: View {
     var text: String
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 180, height: 50, alignment: .center)
+
+        Button(action: {}) {
             Text(text)
                 .foregroundColor(Color.white)
+                .frame(width: 180, height: 50, alignment: .center)
         }
+        .background(.blue)
+        .cornerRadius(10)
     }
 }

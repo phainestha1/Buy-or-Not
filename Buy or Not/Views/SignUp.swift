@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SignUp: View {
     
@@ -104,10 +105,12 @@ struct SignUp: View {
                     categoryName: "기타",
                     hashTagsInString: "#자동차 #결혼기념일 #생일선물" )
 
-                NavigationLink(destination: SignIn()
-                                .navigationBarBackButtonHidden(true)
-                ) { BasicButton(text: "가입 완료") }
-                .padding(.vertical)
+
+//                BasicButton(text: "가입 완료")
+                Button(action: {registerVerification(userId: userId, passwordConfirmation: passwordObj.passwordConfirmation)}) {
+                    Text("SignUp Sample Button")
+                }
+                    .padding(.vertical)
             }
         }
     }
@@ -120,3 +123,13 @@ struct SignUp_Previews: PreviewProvider {
 }
 
 
+func registerVerification (userId: String, passwordConfirmation: String) -> Void {
+        Auth.auth().createUser(withEmail: userId, password: passwordConfirmation) {
+            authResult, error in
+            if let e = error {
+                print(e)
+            } else {
+                print(authResult!)
+            }
+        }
+}

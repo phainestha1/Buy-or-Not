@@ -39,9 +39,7 @@ struct SignIn: View {
                     .padding(.trailing, 15)
                 }
 
-                NavigationLink(destination: Main()
-                                .navigationBarBackButtonHidden(false)
-                ) { BasicButton(text: "로그인") }
+                BasicButton(text: "로그인")
                     .padding(.vertical)
                 
                 ScreenTransitionLink(destination: AnyView(Profile()), text: "이메일/비밀번호 찾기")
